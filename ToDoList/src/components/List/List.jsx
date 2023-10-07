@@ -1,14 +1,16 @@
 import { Button } from '../'
 import './List.css'
-export function List ({ list, onToggle, onDelete, showList }) {
-  const handleToggle = (todo) => onToggle(todo)
-  const handleDelete = (id) => onDelete(id)
+import { useTodos } from '../../hooks/useTodos'
+export function List () {
+  const { hasTodos, filteredTodos, handleToggle, handleDelete } = useTodos()
+  // const handleToggle = (todo) => onToggle(todo)
+  // const handleDelete = (id) => onDelete(id)
 
   return (
     <ul className='list'>
       {
-        showList
-          ? list.map(item =>
+        hasTodos
+          ? filteredTodos.map(item =>
             <ListItem
               onToggle={handleToggle}
               onDelete={handleDelete}

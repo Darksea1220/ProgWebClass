@@ -1,9 +1,11 @@
 import './Form.css'
 import { useState } from 'react'
+import { useTodos } from '../../hooks/useTodos'
 
 const initInputValue = ''
 
-export function Form ({ onSubmit }) {
+export function Form () {
+  const { createTodo } = useTodos()
   const [inputValue, setInputValue] = useState(initInputValue)
 
   const disableBtn = inputValue.trim() === ''
@@ -15,7 +17,7 @@ export function Form ({ onSubmit }) {
     if (disableBtn) {
       return
     }
-    onSubmit(inputValue)
+    createTodo(inputValue)
     setInputValue(initInputValue)
   }
 

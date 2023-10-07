@@ -1,9 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useContext } from 'react'
+import { TodosContext } from '../context/TodosContext'
 
-export const useTodos = (initTodosState) => {
-  const [todos, setTodos] = useState(initTodosState)
-  const [filter, setFilter] = useState('all')
+export const useTodos = () => {
+  // const [todos, setTodos] = useState(initTodosState)
+  // const [filter, setFilter] = useState('all')
+  const context = useContext(TodosContext)
 
+  if (!context) {
+    throw new Error('This component sould be within a GifsContextrovider Component')
+  }
+  const { todos, filter, setTodos, setFilter } = context
   useEffect(() => {
     window.localStorage.setItem('todos', JSON.stringify(todos))
   }, [todos])

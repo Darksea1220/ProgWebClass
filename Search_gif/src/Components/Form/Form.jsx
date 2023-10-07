@@ -1,21 +1,16 @@
 import './Form.css'
-import { useState } from 'react'
+import { useForm } from '../../hooks/useForm'
+import { useApp } from '../../hooks/useApp'
 
-export function Form ({ onSubmit }) {
-  const [query, setQuery] = useState('')
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (query.trim() === '' || query.trim().length < 2) {
-      return
-    }
-    onSubmit(query)
-  }
+export function Form () {
+  const { handleUserSubmit } = useApp()
 
-  const handleInputChange = (e) => {
-    const { target } = e
-    const query = target.value
-    setQuery(query)
-  }
+  const {
+    handleSubmit,
+    handleInputChange,
+    query,
+    inputRef
+  } = useForm(handleUserSubmit)
 
   return (
     <form
@@ -32,6 +27,7 @@ export function Form ({ onSubmit }) {
           placeholder='Messi, Colombia...'
           onChange={handleInputChange}
           value={query}
+          ref={inputRef}
         />
       </div>
       <button type='submit'>

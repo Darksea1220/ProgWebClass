@@ -1,7 +1,10 @@
 import './Filters.css'
-export function Filters ({ onChange, currentValue, filters }) {
+import { useTodos } from '../../hooks/useTodos'
+import { filters } from '../../const/filters'
+export function Filters () {
+  const { handleFilterChange, filter } = useTodos()
   const handleChange = ({ target }) => {
-    onChange(target.value)
+    handleFilterChange(target.value)
   }
   return (
     <ul className='filters'>
@@ -14,7 +17,7 @@ export function Filters ({ onChange, currentValue, filters }) {
                     id={id}
                     value={value}
                     onChange={handleChange}
-                    checked={(currentValue === value)}
+                    checked={(filter === value)}
                   />
                   <label htmlFor={id}>{label}</label>
                 </li>

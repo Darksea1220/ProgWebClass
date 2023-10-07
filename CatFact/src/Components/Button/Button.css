@@ -1,0 +1,43 @@
+button {
+    position: relative;
+    background-color: #f88;
+    color: #000000;
+    border: none;
+    padding: 20px 40px;
+    margin-top: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    overflow: hidden;
+    transform: scale(1);
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  }
+  
+  button::before,
+  button::after {
+    content: '';
+    position: absolute;
+    background-color: #f88;
+    width: 30px;
+    height: 60px;
+    border-radius: 50%;
+  }
+  
+  button::before {
+    left: -20px;
+    top: -10px;
+    transform: rotate(45deg);
+  }
+  
+  button::after {
+    right: -20px;
+    top: -10px;
+    transform: rotate(-45deg);
+  }
+  
+  button:hover {
+    background-color: #ff1c82;
+    transform: scale(1.1);
+  }
+  

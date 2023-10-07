@@ -1,13 +1,30 @@
+import { useApp } from '../../hooks/useApp'
 import './Gifs.css'
-export function Gifs ({ gifs, error }) {
+export function Gifs () {
+  const {
+    query,
+    gifs,
+    error,
+    isLoading,
+    isFirstTime
+  } = useApp()
   const hasGifs = gifs.length > 0
+
+  if (isLoading) {
+    return (
+      <img
+        src='https://i.gifer.com/ZKZg.gif'
+        width='200px'
+      />
+    )
+  }
 
   if (error) {
     return (<p>{error}</p>)
   }
 
-  if (!hasGifs) {
-    return <p>There are no results</p>
+  if (!hasGifs && !isFirstTime) {
+    return <p>There are no results {query}</p>
   }
 
   return (
