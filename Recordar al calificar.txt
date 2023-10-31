@@ -1,0 +1,2 @@
+Hola, porfa recordar que tuvimos inconvenientes con los git de Juan y Rossy, la carpeta 3levate tiene el home con el header y el footer
+la caréta 3levatenew tiene el proyecto, el detalle y la paginación funcional.
